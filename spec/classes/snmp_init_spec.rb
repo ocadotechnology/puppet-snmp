@@ -826,6 +826,16 @@ describe 'snmp', :type => 'class' do
       end
     end
 
+    describe 'snmpd_mibs => foo-mib' do
+      let(:params) {{ :snmpd_options => 'foo-mib' }}
+      it { should contain_file('snmpd.sysconfig') }
+      it 'should contain File[snmpd.sysconfig] with contents "MIBS=\'foo-mib\'"' do
+        verify_contents(catalogue, 'snmpd.sysconfig', [
+          'MIBS=\'foo-mib\'',
+        ])
+      end
+    end
+
     describe 'snmptrapd_options => bleh' do
       let(:params) {{ :snmptrapd_options => 'bleh' }}
       it { should contain_file('snmpd.sysconfig') }

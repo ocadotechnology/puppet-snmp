@@ -5,7 +5,11 @@
 
 # Don't load any MIBs by default.
 # You might comment this lines once you have the MIBs downloaded.
+<% if @snmpd_mibs and (@snmpd_mibs.size > 0) -%>
+export MIBS=<%= @snmpd_mibs %>
+<% else -%>
 export MIBS=
+<% end -%>
 
 # snmpd control (yes means start daemon).
 SNMPDRUN=<%= @snmpdrun %>

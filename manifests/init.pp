@@ -165,6 +165,10 @@
 #   Commandline options passed to snmpd via init script.
 #   Default: auto-set, platform specific
 #
+# [*snmpd_mibs*]
+#   Environment variable "MIBS" passed to snmpd via init script.
+#   Default: auto-set, platform specific [ Debian-like only for now ]
+#
 # [*service_ensure*]
 #   Ensure if service is running or stopped.
 #   Default: running
@@ -289,6 +293,7 @@ class snmp (
   $autoupgrade             = $snmp::params::safe_autoupgrade,
   $package_name            = $snmp::params::package_name,
   $snmpd_options           = $snmp::params::snmpd_options,
+  $snmpd_mibs              = $snmp::params::snmpd_mibs,
   $service_ensure          = $snmp::params::service_ensure,
   $service_name            = $snmp::params::service_name,
   $service_enable          = $snmp::params::service_enable,

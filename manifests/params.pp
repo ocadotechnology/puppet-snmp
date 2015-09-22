@@ -333,6 +333,8 @@ class snmp::params {
 
       $trap_service_config      = '/etc/snmp/snmptrapd.conf'
       $trap_service_name        = 'snmptrapd'
+
+      $snmpd_mibs               = undef
     }
     'Debian': {
       $package_name             = 'snmpd'
@@ -352,6 +354,8 @@ class snmp::params {
 
       $trap_service_config      = '/etc/snmp/snmptrapd.conf'
       $snmptrapd_options        = '-Lsd -p /var/run/snmptrapd.pid'
+
+      $snmpd_mibs               = 'UCD-SNMP-MIB'
     }
     'Suse': {
       $package_name             = 'net-snmp'
@@ -372,6 +376,8 @@ class snmp::params {
       $trap_service_config      = '/etc/snmp/snmptrapd.conf'
       $trap_service_name        = 'snmptrapd'
       $snmptrapd_options        = undef
+
+      $snmpd_mibs               = undef
     }
     'FreeBSD': {
       $package_name             = 'net-mgmt/net-snmp'
@@ -394,6 +400,8 @@ class snmp::params {
       $trap_service_config      = '/usr/local/etc/snmp/snmptrapd.conf'
       $trap_service_name        = 'snmptrapd'
       $snmptrapd_options        = undef
+
+      $snmpd_mibs               = undef
     }
     default: {
       fail("Module ${::module} is not supported on ${::operatingsystem}")
